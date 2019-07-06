@@ -22,6 +22,16 @@ Access:      Private
 router.get("/google/callback", passport.authenticate("google"));
 
 /*
+Route:       GET auth/api/logout
+Description: Logout user
+Access:      Private
+*/
+router.get('/api/logout', (req, res) => {
+  req.logout();
+  res.send(req.user);
+});
+
+/*
 Route:       GET auth/api/me
 Description: Send current user's profile
 Access:      Private
