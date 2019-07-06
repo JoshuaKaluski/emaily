@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require('mongoose');
-require('./services/passport');
 const {mongoURI} = require('./config/keys');
+require('./services/passport');
+require('./models/User');
 
 const PORT = process.env.PORT || 5000;
 
