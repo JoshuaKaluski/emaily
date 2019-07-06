@@ -82,3 +82,4 @@ fabric.properties
 
 # Sonarlint plugin
 .idea/sonarlint
+!/config/db.js

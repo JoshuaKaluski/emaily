@@ -1,16 +1,14 @@
 const express = require("express");
-const mongoose = require('mongoose');
-const {mongoURI} = require('./config/keys');
 require('./services/passport');
-require('./models/User');
+const connectDB = require('./config/db');
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(mongoURI);
-
 const app = express();
+
+connectDB();
 
 //Define routes
 app.use('/auth', require('./routes/auth'));
 
-app.listen(PORT);
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
