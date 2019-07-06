@@ -8,7 +8,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById({id}).then(user => {
+  User.findById(id).then(user => {
     done(null, user);
   })
 });
@@ -24,7 +24,7 @@ passport.use(
      async (accessToken, refreshToken, profile, done) => {
       let existingUser = await User.findOne({googleID: profile.id});
 
-      if (!existingUser) {
+      if (existingUser) {
         //Exit callback with existing User
         done(null, existingUser);
       } else {
