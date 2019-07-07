@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './App.css';
 
 function App() {
   return (
-    <h1>App</h1>
+    <Fragment>
+      <h1>App</h1>
+      <a href='/auth/google'>Sign in with Google</a>
+    </Fragment>
   );
 }
 
