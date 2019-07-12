@@ -19,7 +19,13 @@ Route:       GET auth/google/callback
 Description: Callback from Google OAuth process
 Access:      Private
 */
-router.get("/google/callback", passport.authenticate("google"));
+router.get(
+  "/google/callback",
+  passport.authenticate("google"),
+  (req, res) => {
+    res.redirect('/surveys');
+  }
+);
 
 /*
 Route:       GET auth/api/logout
@@ -28,7 +34,7 @@ Access:      Private
 */
 router.get('/api/logout', (req, res) => {
   req.logout();
-  res.send(req.user);
+  res.redirect('/')
 });
 
 /*
