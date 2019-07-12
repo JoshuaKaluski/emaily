@@ -27,14 +27,13 @@ passport.use(
 
       if (existingUser) {
         //Exit callback with existing User
-        done(null, existingUser);
-      } else {
-        //Create a new User if none exist
-        let user = await new User({googleID: profile.id}).save();
-
-        //Exit callback with new User
-        done(null, user);
+        return done(null, existingUser);
       }
+      //Create a new User if none exist
+      let user = await new User({googleID: profile.id}).save();
+
+      //Exit with new User
+      done(null, user);
     }
   )
 );
